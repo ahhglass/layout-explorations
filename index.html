@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music for the soul</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="static/image/favicon.svg" type="image/x-icon">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo-container">
+        <div class="logo-circles">
+          <div class="circle circle-1"></div>
+          <div class="circle circle-2"></div>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <ul>
+          <li>
+            <a href="#journey" data-panel-open="journeyPanel">ТВОРЧЕСКИЙ ПУТЬ</a>
+            <div class="nav-hover-square"></div>
+          </li>
+          <li>
+            <a href="#about" data-panel-open="aboutPanel">О ПРОЕКТЕ</a>
+            <div class="nav-hover-square"></div>
+          </li>
+          <li>
+            <a href="#sound" data-panel-open="soundPanel">ЗВУК</a>
+            <div class="nav-hover-square"></div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="contact-link">
+        <a href="https://t.me/sad_lx4d">+СВЯЗЬ</a>
+      </div>
+    </div>
+  </header>
+
+  <dialog class="info-panel" id="journeyPanel">
+    <button type="button" class="info-panel__close" data-panel-close aria-label="Закрыть">×</button>
+    <h2 class="info-panel__title">Творческий путь</h2>
+    <p>Скролль вниз — проходи через визуальные этапы. Каждая секция меняет фон и настроение.</p>
+    <p>В центре — светящийся круг: он растёт и светится по мере продвижения.</p>
+    <p>Сетка и круги в оверлее сходятся к центру — метафора сближения с ядром опыта.</p>
+  </dialog>
+
+  <dialog class="info-panel" id="aboutPanel">
+    <button type="button" class="info-panel__close" data-panel-close aria-label="Закрыть">×</button>
+    <h2 class="info-panel__title">О проекте</h2>
+    <p>Интерактивный скролл-опыт: звук, геометрия и изображения реагируют на движение по странице.</p>
+    <p>Каждая секция — отдельный визуальный этап; внизу — финальный блок с текстом и атрибуцией.</p>
+    <p>Нажми «Начать», чтобы включить аудио и войти в опыт.</p>
+  </dialog>
+
+  <dialog class="info-panel" id="soundPanel">
+    <button type="button" class="info-panel__close" data-panel-close aria-label="Закрыть">×</button>
+    <h2 class="info-panel__title">Звук</h2>
+    <p>Фоновая музыка играет после старта и сопровождает весь опыт.</p>
+    <p>При скролле по секциям — текстура движения; в футере звук отключается.</p>
+    <p>Наведение на пункты меню и кнопки даёт короткие звуковые акценты.</p>
+  </dialog>
+
+  <div class="gradient-reveal"></div>
+
+  <div class="audio-enable">
+    <p>НАЖМИ<br />ЧТОБЫ ПОГРУЗИТЬСЯ</p>
+    <button class="enable-button" id="enableBtn" type="button">НАЧАТЬ</button>
+  </div>
+
+  <div class="preloader" id="preloader">
+    <span id="counter">[000]</span>
+  </div>
+
+  <div class="geometric-background">
+    <svg class="geometric-svg" viewBox="0 0 1920 1080">
+      <g id="grid-lines"></g>
+      <g id="circles-outline"></g>
+      <g id="circles-filled">
+        <clipPath id="right-half">
+          <rect x="960" y="0" width="960" height="1080" />
+        </clipPath>
+        <g clip-path="url(#right-half)"></g>
+      </g>
+
+      <text class="geometric-text text-top-left" x="100" y="100">ТВОРЧЕСКИЙ</text>
+      <text class="geometric-text text-top-left" x="100" y="115">ПРОЦЕСС</text>
+
+      <text class="geometric-text text-top-right" x="1720" y="100">СУТЬ</text>
+      <text class="geometric-text text-top-right" x="1720" y="115">ЗВУКА</text>
+
+      <text class="geometric-text text-bottom-left" x="100" y="980" id="debugLine1">ОСОЗНАНИЕ: ТИШИНА</text>
+      <text class="geometric-text text-bottom-left" x="100" y="995" id="debugLine2">СОСТОЯНИЕ: ПУСТОТА</text>
+      <text class="geometric-text text-bottom-left" x="100" y="1010" id="debugLine3">ЭНЕРГИЯ: СПЯЩАЯ</text>
+      <text class="geometric-text text-bottom-left" x="100" y="1025" id="debugLine4">ПРИСУТСТВИЕ: ПЛОТНОЕ</text>
+
+      <text class="geometric-text text-bottom-right" x="1620" y="980">МЕЖДУ</text>
+      <text class="geometric-text text-bottom-right" x="1620" y="995">УДАРАМИ СЕРДЦА</text>
+    </svg>
+  </div>
+
+  <audio id="startClickSound" preload="auto">
+    <source src="https://assets.codepen.io/7558/preloader-2s-001.mp3" type="audio/mpeg" />
+  </audio>
+
+  <audio id="preloaderSound" preload="auto">
+    <source src="https://assets.codepen.io/7558/preloader-5s-001.mp3" type="audio/mpeg" />
+  </audio>
+
+  <audio id="scrollSound" loop preload="auto">
+    <source src="https://assets.codepen.io/7558/glitch-fx-001.mp3" type="audio/mpeg" />
+  </audio>
+
+  <audio id="hoverSound" preload="auto">
+    <source src="https://assets.codepen.io/7558/preloader-2s-001.mp3" type="audio/mpeg" />
+  </audio>
+
+  <audio id="backgroundMusic" loop preload="auto">
+    <source src="https://assets.codepen.io/7558/lxstnght-night-angel.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div class="center-circle">
+    <div class="circle-container">
+      <div class="glowing-circle" id="glowCircle"></div>
+    </div>
+  </div>
+
+  <section class="section section-1">
+    <div class="section-content"></div>
+  </section>
+
+  <section class="section section-2">
+    <div class="section-content"></div>
+  </section>
+
+  <section class="section section-3">
+    <div class="section-content"></div>
+  </section>
+
+  <section class="section section-4">
+    <div class="section-content"></div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-content-section">
+      <div class="footer-content">
+        <div class="footer-left">
+          <p>ТЬМА</p>
+          <p>ТАМ, ГДЕ</p>
+          <p>РОЖДАЕТСЯ СВЕТ</p>
+          <p>ПУСТОТА</p>
+          <p>СОЗДАЁТ ПРОСТРАНСТВО</p>
+          <p>ДЛЯ ИСЦЕЛЕНИЯ</p>
+        </div>
+        <div class="footer-right">
+          <p>ТВОРЧЕСТВО ТЕЧЁТ ПО</p>
+          <p>БЕСКОНЕЧНЫМ ПУТЯМ</p>
+          <p>СОЗНАНИЕ РАСШИРЯЕТСЯ</p>
+          <p>В БЕЗГРАНИЧНЫЕ ОБЛАСТИ</p>
+          <p>СВЕТА И ВОЗМОЖНОСТЕЙ</p>
+          <p>ГДЕ ИСЦЕЛЕНИЕ СТАНОВИТСЯ ИСКУССТВОМ</p>
+        </div>
+      </div>
+      <div class="footer-credits">
+        <p>Звук и музыка: <a href="https://open.spotify.com/artist/6YXgRMajnjib8j6Cxzcryp?si=iiLnt59BRp6QgKGizkG5Zg" target="_blank" rel="noopener noreferrer">@LXSTNGHT</a></p>
+      </div>
+    </div>
+    <div class="footer-svg-section">
+      <img class="footer-svg" src="https://assets.codepen.io/7558/arrival-text.svg" alt="Прибытие" />
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
